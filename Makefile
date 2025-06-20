@@ -38,21 +38,23 @@ down:
 # 	@$(RM) $(OBJS_DIR)
 # 	@echo "$(BABEBLUEB)🧹 CLEAN DONE! OBJS FILES REMOVED 🧹$(COLOR_RESET)"
 
-
 fclean: #clean
 	./cleanup.sh
 	@echo "$(BABEBLUEB)🫧 FULL CLEANUP DONE! 🫧$(COLOR_RESET)"
 
 ### Rebuild ###
+
 re: fclean
 	$(MAKE) up
 	@echo "$(REDB)RE DONE$(COLOR_RESET)"
+
 
 # **************************************************************************** #
 #                              PHONY TARGETS                                   #
 # **************************************************************************** #
 
 .PHONY: up down fclean re
+
 
 # **************************************************************************** #
 #                              COLOR SETTING                                   #
