@@ -2,11 +2,10 @@
 #                                 DIRECTORIES                                  #
 # **************************************************************************** #
 
+#DATA_DIR : make variable , $(HOME) fetches current home's directory
 DATA_DIR = $(HOME)/data
 MARIADB_DATA = $(DATA_DIR)/mariadb_data/
 WORDPRESS_DATA = $(DATA_DIR)/wordpress_data/
-
-
 
 
 # **************************************************************************** #
@@ -14,7 +13,8 @@ WORDPRESS_DATA = $(DATA_DIR)/wordpress_data/
 # **************************************************************************** #
 
 COMPOSE_FL = ./src/docker-compose.yml
-DOCKER_CLEAN = ./cleanup.sh
+#CLEANUP = ./cleanup.sh
+
 
 # **************************************************************************** #
 #                               BUILD COMMANDS                                 #
@@ -24,21 +24,28 @@ DOCKER_CLEAN = ./cleanup.sh
 all: up
 
 up:
-	mkdir -p 
+	mkdir -p $(DATA_DIR)
+	mkdir -p $(MARIADB_DATA) $(WORDPRESS_DATA)
+	docker compose -f $(COMPOSE_FL) up -d --build
+
+down:
+	docker compose -f $(COMPOSE_FL) down
+
 
 ### CLEANUP ###
 
-clean:
-	@$(RM) $(OBJS_DIR)
-	@echo "$(BABEBLUEB)🧹 CLEAN DONE! OBJS FILES REMOVED 🧹$(COLOR_RESET)"
+# clean:
+# 	@$(RM) $(OBJS_DIR)
+# 	@echo "$(BABEBLUEB)🧹 CLEAN DONE! OBJS FILES REMOVED 🧹$(COLOR_RESET)"
 
 
-fclean: clean
-
-	@echo "$(BABEBLUEB)🫧 FCLEAN DONE! [ $(NAME) ] REMOVED 🫧$(COLOR_RESET)"
+fclean: #clean
+	./cleanup.sh
+	@echo "$(BABEBLUEB)🫧 FULL CLEANUP DONE! 🫧$(COLOR_RESET)"
 
 ### Rebuild ###
-re: fclean 
+re: fclean
+	$(MAKE) up
 	@echo "$(REDB)RE DONE$(COLOR_RESET)"
 
 # **************************************************************************** #
@@ -69,9 +76,20 @@ YELLOW_BBG = \033[1;43m
 ORANGE_BBG = \033[1;48;5;214m
 
 
+# **************************************************************************** #
+#                                    NOTES                                     #
+# **************************************************************************** #
+
 # make: create volumes and start the stack
 # make up: shortcut to (1)Prepare your environment / (2)Build Docker images / (3)Launch WordPress + Nginx + MariaDB stack
 # use make up when-> 
 #(1)Have multiple targets (like make down, make re, make fclean)
 #(2)Need to run one specific target instead of the default (all)
 # make down: stop and clean up containers
+
+# mkdir -p: creates directories if they don’t exist (-p avoids errors)
+# -f: specifies the file
+# up: starts services
+# -d: detached mode (runs in background)
+# --build: rebuilds images even if they exist
+# $(MAKE) : (1) It's a built-in. No need to define it / (2) Portable, safe way to invoke make from within a Makefile
