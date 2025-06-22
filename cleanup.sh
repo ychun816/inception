@@ -22,7 +22,7 @@ if [-n "$(docker volumes ls -q)"]; then
 fi;
 
 
-# after cleaning containers & images -> 
+# after cleaning containers & images -> better to do thorough cleanup to better control the files left
 docker system prune -a;
 
 # remove all networks 
@@ -41,7 +41,6 @@ sudo rm -rf /home/yilin/data
 COLOR_RESET="\033[0m"
 GREENB="\033[1;38;5;85m"
 REDB="\033[1;91m"
-
 
 # **************************************************************************** #
 #                                    NOTES                                     #
