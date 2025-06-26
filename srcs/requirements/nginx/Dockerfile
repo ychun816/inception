@@ -30,7 +30,7 @@ RUN openssl req -x509 \
 
 # copy files from the local build context into the root directory of (the docker) image.
 # COPY <source> <destination>
-COPY nginx.conf /etc/nginx/nginx.conf
+# COPY nginx.conf /etc/nginx/nginx.conf
 
 # Create the /run/nginx directory -> typically used by nginx to store the PID file and runtime data.
 RUN mkdir -p /run/nginx
