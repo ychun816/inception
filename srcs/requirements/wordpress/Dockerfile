@@ -1,9 +1,9 @@
-FROM debain:bullseye
+FROM debian:bullseye
 
 # Update package lists, upgrade existing packages, and install required packages
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y
+    apt-get install -y \
     wget \
     curl \
     bash \
@@ -28,13 +28,13 @@ COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 RUN mkdir /run/php
 
 # Copy custom WordPress setup script into container
-COPY ./tools/create_wordpress.sh /usr/local/bin/
+COPY ./tools/setup_wordpress.sh /usr/local/bin/
 
 # Make the WordPress setup script executable
-RUN chmod +x /usr/local/bin/create_wordpress.sh
+RUN chmod +x /usr/local/bin/setup_wordpress.sh
 
 # Set the entrypoint script -> run automatically when the container start
-ENTRYPOINT ["/usr/local/bin/create_wordpress.sh"]
+ENTRYPOINT ["/usr/local/bin/setup_wordpress.sh"]
 
 # Set the working directory inside the container
 WORKDIR /var/www/html/
