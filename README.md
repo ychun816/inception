@@ -10,10 +10,14 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe
 𓃻 Network Basics: 
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S102HYKNll
 
-𓃻 Dockerfilesssss (in process):
+(in process)
+𓃻 Dockerfilesssss:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJJj9PQXxg
 
-𓃻 Volume (in process):
+𓃻 Database/Mariadb:
+https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk1dwAoVxx
+
+𓃻 Volume:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rye_mRiNeg
 
 
