@@ -11,6 +11,7 @@ RUN apt-get update && \
     nginx \
     openssl \
     procps
+    #curl
 
 # Create the directory /etc/nginx/ssl if it doesn't already exist.
 # This folder will store SSL certificates and keys for nginx.
@@ -30,7 +31,7 @@ RUN openssl req -x509 \
 
 # copy files from the local build context into the root directory of (the docker) image.
 # COPY <source> <destination>
-# COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Create the /run/nginx directory -> typically used by nginx to store the PID file and runtime data.
 RUN mkdir -p /run/nginx
