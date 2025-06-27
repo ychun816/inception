@@ -3,6 +3,11 @@
 🀄︎🀀🀁🀂🀃🀅🀇🀈🀉
 🀢🀣🀤🀥🀦🀧🀨🀩🀐🀙
 
+Nginx tests+explains :
+https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk2Jbr24xe
+
+﹏𓃬_𓃮𓃮﹏𓃮﹏ The rest is a mess ﹏𓃬_𓃮𓃮﹏𓃮﹏
+
 𓃻 Brief for Total Newbs:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe
 
@@ -20,9 +25,7 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk1dwAoVxx
 𓃻 Volume:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rye_mRiNeg
 
-
-﹏𓃬_𓃮𓃮﹏𓃮﹏
-
-𓃻 Dockerfile Test Commands: 
+-------------------------------------------------
+𓃻 Dockerfile Test Commands (lameeee)
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJE4fQvVlx
 
