@@ -4,43 +4,26 @@ services:
   # Nginx Web Server Service
   nginx:
     container_name: nginx
-    build: ./requirements/nginx
-      # context: ./requirements/nginx
-      # dockerfile: Dockerfile
+    build: ./requirements/nginx  # Simple form: just the directory path
+    # OR
+    #build:
+      #context: ./requirements/nginx    #Build context directory
+      #dockerfile: Dockerfile          #Dockerfile name (default is "Dockerfile")
     depends_on:
-      - wordpress
+      - wordpress # This service waits for 'wordpress' service to start first
     ports:
-      - 443:443
+      - 443:443 # host_port:container_port #Maps port 443 on your machine to port 443 in container
     volumes:
-      - wordpress_data:/var/www/html
+      - wordpress_data:/var/www/html #named_volume:container_path #Shares data between containers
     networks:
-      - inception_network
-    restart: always 
+      # - inception_network
+      - network # Connects to a custom network named "network"
+    restart: always # Container restarts automatically if it stops
+    # OR:
+    # restart: unless-stopped  # Restart unless manually stopped
+    # restart: on-failure     # Only restart on failure
+    # restart: no             # Never restart
 
-  # WordPress Service
-  wordpress:
-    build: ./requirements/wordpress
-    container_name: wordpress
-    depends_on:
-      - mariadb
-    environment:
-      DB_NAME: ${MYSQL_DATABASE}
-      DB_USER: ${MYSQL_USER}
-      DB_PASSWORD: ${MYSQL_PASSWORD}
-      DB_HOST: mariadb
-      WP_URL: ${WP_URL}
-      WP_TITLE: ${WP_TITLE}
-      WP_ADMIN_USER: ${WP_ADMIN_USER}
-      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
-      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
-      WP_USER: ${WP_USER}
-      WP_USER_PASSWORD: ${WP_USER_PASSWORD}
-      WP_USER_EMAIL: ${WP_USER_EMAIL}
-    volumes:
-      - wordpress_data:/var/www/html
-    networks:
-      - inception_network
-    restart: unless-stopped
 
   # MariaDB Database Service
   mariadb:
@@ -57,26 +40,52 @@ services:
       - inception_network
     restart: unless-stopped
 
+  # WordPress Service
+  # wordpress:
+  #   build: ./requirements/wordpress
+  #   container_name: wordpress
+  #   depends_on:
+  #     - mariadb
+  #   environment:
+  #     DB_NAME: ${MYSQL_DATABASE}
+  #     DB_USER: ${MYSQL_USER}
+  #     DB_PASSWORD: ${MYSQL_PASSWORD}
+  #     DB_HOST: mariadb
+  #     WP_URL: ${WP_URL}
+  #     WP_TITLE: ${WP_TITLE}
+  #     WP_ADMIN_USER: ${WP_ADMIN_USER}
+  #     WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
+  #     WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+  #     WP_USER: ${WP_USER}
+  #     WP_USER_PASSWORD: ${WP_USER_PASSWORD}
+  #     WP_USER_EMAIL: ${WP_USER_EMAIL}
+  #   volumes:
+  #     - wordpress_data:/var/www/html
+  #   networks:
+  #     - inception_network
+  #   restart: unless-stopped
+
+
 
 # Named volumes for data persistence
-volumes:
-  mariadb_data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/${USER}/data/mariadb
-  wordpress_data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/${USER}/data/wordpress
+# volumes:
+#   mariadb_data:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /home/${USER}/data/mariadb
+#   wordpress_data:
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /home/${USER}/data/wordpress
 
-# Custom network for service communication
-networks:
-  inception_network:
-    driver: bridge
+# # Custom network for service communication
+# networks:
+#   inception_network:
+#     driver: bridge
 
 
 
