@@ -7,7 +7,7 @@ Nginx tests+explains :
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk2Jbr24xe
 
 -------------------------------------------------
-﹏𓃬_𓃮𓃮﹏𓃮﹏ The rest is a mess ﹏𓃬_𓃮𓃮﹏𓃮﹏
+﹏𓃬_𓃮𓃮﹏𓃮﹏ The rest is a mess, in process ﹏𓃬_𓃮𓃮﹏𓃮﹏
 
 𓃻 Brief for Total Newbs:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe
@@ -16,7 +16,6 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe
 𓃻 Network Basics: 
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S102HYKNll
 
-(in process)<br>
 𓃻 Dockerfilesssss:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJJj9PQXxg
 
