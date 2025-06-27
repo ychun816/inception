@@ -6,6 +6,5 @@
 𓃻 Brief for Total Newbs:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe
 
--------------------------------------------------
-Nginx tests+explains :
+🀢 Nginx tests+explains :
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk2Jbr24xe
