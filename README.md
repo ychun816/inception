@@ -6,7 +6,7 @@
 𓃻 Brief for Total Newbs:
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe
 
-﹏𓃬_𓃮𓃮﹏𓃮﹏
+﹏𓃬_𓃮𓃮﹏𓃮﹏ <br>
 𓃻 Network Basics: 
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/S102HYKNll
 
