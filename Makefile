@@ -32,7 +32,15 @@ down:
 	docker compose -f $(COMPOSE_FL) down
 
 getenv:
-	@read
+	@echo "Insert the path of .env file from:"
+	@read env_path; \
+	if [ -f $$env_path ]; then \
+		cp $$env_path srcs/.env; \
+		echo ".env file copied successfully."; \
+	else \
+		echo "Error: .env file not found."; \
+		exit 1; \
+	fi
 
 
 ### CLEANUP ###
