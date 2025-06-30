@@ -1,7 +1,7 @@
 #version: '3.8'
 
 services:
-  # Nginx Web Server Service
+  # NGINX Web Server Service
   nginx:
     container_name: nginx
     build: ./requirements/nginx  # Simple form: just the directory path
@@ -16,79 +16,96 @@ services:
     volumes:
       - wordpress_data:/var/www/html #named_volume:container_path #Shares data between containers
     networks:
-      # - inception_network
-      - network # Connects to a custom network named "network"
+      - inception_network
+      #- network # Connects to a custom network named "network"
     restart: always # Container restarts automatically if it stops
     # OR:
     # restart: unless-stopped  # Restart unless manually stopped
     # restart: on-failure     # Only restart on failure
     # restart: no             # Never restart
 
-
-  # MariaDB Database Service
+  # MARIADB DATABASE
   mariadb:
+    # env_file: .env  # Passes ALL variables to container
     build: ./requirements/mariadb
     container_name: mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOSTNAME=${MYSQL_HOSTNAME}
+      MYSQL_DATABASE=${MYSQL_DATABASE}
+      MYSQL_USER=${MYSQL_USER}
+      MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      # MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      # MYSQL_DATABASE: ${MYSQL_DATABASE}
+      # MYSQL_USER: ${MYSQL_USER}
+      # MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
       - inception_network
+      #- network
     restart: unless-stopped
 
-  # WordPress Service
-  # wordpress:
-  #   build: ./requirements/wordpress
-  #   container_name: wordpress
-  #   depends_on:
-  #     - mariadb
-  #   environment:
-  #     DB_NAME: ${MYSQL_DATABASE}
-  #     DB_USER: ${MYSQL_USER}
-  #     DB_PASSWORD: ${MYSQL_PASSWORD}
-  #     DB_HOST: mariadb
-  #     WP_URL: ${WP_URL}
-  #     WP_TITLE: ${WP_TITLE}
-  #     WP_ADMIN_USER: ${WP_ADMIN_USER}
-  #     WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
-  #     WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
-  #     WP_USER: ${WP_USER}
-  #     WP_USER_PASSWORD: ${WP_USER_PASSWORD}
-  #     WP_USER_EMAIL: ${WP_USER_EMAIL}
-  #   volumes:
-  #     - wordpress_data:/var/www/html
-  #   networks:
-  #     - inception_network
-  #   restart: unless-stopped
+  # WORDPRESS
+  wordpress:
+    build: ./requirements/wordpress
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    environment:
+      WP_ADMIN_USER=${WP_ADMIN_USER}
+      WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
+      WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
+      WP_URL=${WP_UR}
+      WP_TITLE=${WP_TITLE}
+      WP_USER=${WP_USER}
+      WP_USER_PASSWORD=${WP_USER_PASSWORD}
+      WP_USER_EMAIL=${WP_USER_EMAIL}
+      # DB_NAME: ${MYSQL_DATABASE}
+      # DB_USER: ${MYSQL_USER}
+      # DB_PASSWORD: ${MYSQL_PASSWORD}
+      # DB_HOST: mariadb
+      # WP_URL: ${WP_URL}
+      # WP_TITLE: ${WP_TITLE}
+      # WP_ADMIN_USER: ${WP_ADMIN_USER}
+      # WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD}
+      # WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+      # WP_USER: ${WP_USER}
+      # WP_USER_PASSWORD: ${WP_USER_PASSWORD}
+      # WP_USER_EMAIL: ${WP_USER_EMAIL}
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception_network
+      #network
+    restart: unless-stopped
 
+# VOLUMES #Named volumes for data persistence
+volumes:
+  # mariadb
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/data/mariadb_data
+      #device: /home/${USER}/data/mariadb
+      o: bind
+  
+  # wordpress
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${HOME}/data/wordpress_data
+      #device: /home/${USER}/data/wordpress
+      o: bind
 
-
-# Named volumes for data persistence
-# volumes:
-#   mariadb_data:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       o: bind
-#       device: /home/${USER}/data/mariadb
-#   wordpress_data:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       o: bind
-#       device: /home/${USER}/data/wordpress
-
+# NETWORKS
 # # Custom network for service communication
-# networks:
-#   inception_network:
-#     driver: bridge
-
-
-
+networks:
+  inception_network:
+    driver: bridge
 
 
 
@@ -96,37 +113,13 @@ services:
 #                                  NOTES                                       #
 # **************************************************************************** #
 
-########
-# NGNIX
-########
-
 # depends_on:
 #     Adds a service dependency on wordpress, ensuring nginx will wait for wordpress to start first.
 #     This is especially useful because your Nginx nginx.conf is forwarding PHP requests to fastcgi_pass wordpress:9000.
 
 # restart: 
-# unless-stopped is more graceful than restart: always. It ensures services are not restarted if manually stopped, yet they auto-restart after a failure or reboot
-
-#REF
-  # nginx:
-  #   container_name: nginx
-  #   build:
-  #     context: ./requirements/nginx
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 443:443
-  #   volumes:
-  #     - wordpress_data:/var/www/html
-  #   restart: always
-  #   networks:
-  #     - network
-
-  #ALTERNATIVE:
-#   volumes:
-#   wordpress_data:
-
-# networks:
-#   inception_network:
-#     driver: bridge
-
-
+# restart: unless-stopped => more graceful than restart: always. It ensures services are not restarted if manually stopped, yet they auto-restart after a failure or reboot
+# always : Container restarts automatically if it stops
+# unless-stopped :Restart unless manually stopped
+# on-failure : Only restart on failure
+# no : Never restart

@@ -31,6 +31,9 @@ up:
 down:
 	docker compose -f $(COMPOSE_FL) down
 
+getenv:
+	@read
+
 
 ### CLEANUP ###
 
