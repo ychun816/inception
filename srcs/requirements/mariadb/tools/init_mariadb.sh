@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# initialize the MariaDB database if dont exist
+# initialize the MariaDB database if not xist
 if [ ! -d "/var/lib/mysql/mysql" ]; then
-    echo "Initializing MariaDB..."
+    echo "${GREENB}INITIALIZING MariaDB...${COLOR_RESET}"
     mysql_install_db --user=mysql --datadir=/var/lib/mysql
 fi
 
@@ -11,18 +11,23 @@ mysqld_safe --datadir=/var/lib/mysql &
 
 # wait for mariadb server to become available
 until mysqladmin ping -uroot -p"${MYSQL_ROOT_PASSWORD}" --silent; do
-    echo "Waiting for MariaDB..."
+    echo "${GREENB}WAITING FOR MariaDB...${COLOR_RESET}"
     sleep 5
 done
 
-# check if database exists
+# check if database exist
+# Start a heredoc -> send multiple SQL commands to MariaDB
+# All lines until END are passed to the mysql command
 if ! mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "USE ${MYSQL_DATABASE}"; then
-    echo "Setting up MariaDB..."
+    echo "${GREENB}SETTING UP MariaDB...${COLOR_RESET}"
     mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" <<END
     -- Set root password and disable remote root login
     ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';
-    DELETE FROM mysql.user WHERE User=''; -- Remove anonymous users
-    DROP DATABASE IF EXISTS test; -- Remove test database
+    -- Remove anonymous users
+    DELETE FROM mysql.user WHERE User='';
+    -- Remove test database
+    DROP DATABASE IF EXISTS test;
+    -- Reloads the user and privilege tables so changes take effect
     FLUSH PRIVILEGES;
 
     -- Allow root to connect from any host
@@ -35,14 +40,17 @@ if ! mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" -e "USE ${MYSQL_DATABASE}"; then
     FLUSH PRIVILEGES;
 END
 
+# Check if WordPress SQL file exist (for optional DB import)
     if [ -f /usr/local/bin/wordpress.sql ]; then
         mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" "${MYSQL_DATABASE}" < /usr/local/bin/wordpress.sql
     fi
 fi
 
-# shut down mariaDB server
+# shut down mariaDB server after setup is down
 mysqladmin -uroot -p"${MYSQL_ROOT_PASSWORD}" shutdown
 
+# Replace current script process with whatever command was passed in (usually from Docker CMD)
+# Keep container running with MariaDB when start normally
 exec "$@"
 
 # **************************************************************************** #
@@ -98,8 +106,35 @@ exec "$@"
 # # Start MariaDB in foreground
 # exec mysqld_safe --datadir=/var/lib/mysql --socket=/var/run/mysqld/mysqld.sock
 
+
+# **************************************************************************** #
+#                              COLOR SETTING                                   #
+# **************************************************************************** #
+
+COLOR_RESET="\033[0m"
+GREENB="\033[1;38;5;85m"
+REDB="\033[1;91m"
+
+
 # **************************************************************************** #
 #                                  NOTES                                       #
 # **************************************************************************** #
 
+# ! -d : Test if the directory does not exist
+# /var/lib/mysql/mysql : Default location for system tables (if this folder exists, MariaDB is already initialized)
+# --user=mysql : Run initialization as the mysql user
+# --datadir : Set the directory where the database files are stored
+# => Create necessary system tables (like mysql.user)
 
+
+# mysqld_safe : Wrapper that adds logging and auto-restart features
+#  & : Run the command in the background
+
+# mysqladmin ping : Pings the server to check if it's alive
+# -u root : Connects as root
+# -p"${MYSQL_ROOT_PASSWORD}" : Uses root password (from env var)
+# --silent : Suppresses output
+# until : Loop until the command succeeds
+
+# -e "USE ..." : Executes the SQL statement
+# ! : Negates the result — so if the database doesn’t exist, it runs the next block

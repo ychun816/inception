@@ -28,13 +28,13 @@ COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 RUN mkdir /run/php
 
 # Copy custom WordPress setup script into container
-COPY ./tools/setup_wordpress.sh /usr/local/bin/
+COPY ./tools/init_wordpress.sh /usr/local/bin/
 
 # Make the WordPress setup script executable
-RUN chmod +x /usr/local/bin/setup_wordpress.sh
+RUN chmod +x /usr/local/bin/init_wordpress.sh
 
 # Set the entrypoint script -> run automatically when the container start
-ENTRYPOINT ["/usr/local/bin/setup_wordpress.sh"]
+ENTRYPOINT ["/usr/local/bin/init_wordpress.sh"]
 
 # Set the working directory inside the container
 WORKDIR /var/www/html/
