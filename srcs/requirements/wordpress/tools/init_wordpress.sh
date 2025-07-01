@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # WordPress Setup Script
 # This script downloads WordPress, configures it, and sets up the database connection
@@ -18,7 +18,7 @@ WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL:-"admin@example.com"}
 DB_NAME=${MYSQL_DATABASE:-"wordpress"}
 DB_USER=${MYSQL_USER:-"wpuser"}
 DB_PASSWORD=${MYSQL_PASSWORD:-"wppassword"}
-DB_HOST=${DB_HOST:-"mariadb"}
+DB_HOST=${MYSQL_HOSTNAME:-"mariadb"}  # ⚠️ Fixed: Use MYSQL_HOSTNAME
 
 # WordPress directory
 WP_DIR="/var/www/html"
@@ -27,22 +27,27 @@ WP_DIR="/var/www/html"
 cd $WP_DIR
 
 # Check if WordPress is already downloaded
-if [ ! -f wp-config.php ]; then
+if [ ! -f wp-load.php ]; then  # ⚠️ Fixed: Check for wp-load.php instead of wp-config.php
     echo "WordPress not found. Downloading WordPress..."
     
     # Download WordPress core files
-    wp core download --allow-root
+    wp core download --allow-root --force  # ⚠️ Added --force flag
     
     echo "WordPress downloaded successfully."
-    
-    # Wait for database to be ready
-    echo "Waiting for database to be ready..."
-    until wp db check --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASSWORD --dbhost=$DB_HOST; do
-        echo "Database not ready, waiting 5 seconds..."
-        sleep 5
-    done
-    
-    echo "Database is ready. Creating wp-config.php..."
+fi
+
+# Wait for database to be ready using mysql command (not wp db check)
+echo "Waiting for database to be ready..."
+until mysql -h"$DB_HOST" -u"$DB_USER" -p"$DB_PASSWORD" -e "SELECT 1" >/dev/null 2>&1; do
+    echo "Database not ready, waiting 5 seconds..."
+    sleep 5
+done
+
+echo "Database is ready."
+
+# Create wp-config.php if it doesn't exist
+if [ ! -f wp-config.php ]; then
+    echo "Creating wp-config.php..."
     
     # Create wp-config.php with database settings
     wp config create \
@@ -53,34 +58,38 @@ if [ ! -f wp-config.php ]; then
         --allow-root
     
     echo "wp-config.php created successfully."
+fi
+
+# Now test database connection using wp-config.php
+echo "Testing database connection..."
+if ! wp db check --allow-root; then
+    echo "Database connection failed!"
+    exit 1
+fi
+
+# Install WordPress if not already installed
+if ! wp core is-installed --allow-root 2>/dev/null; then
+    echo "Installing WordPress..."
     
-    # Install WordPress if not already installed
-    if ! wp core is-installed --allow-root; then
-        echo "Installing WordPress..."
-        
-        wp core install \
-            --url=$WP_URL \
-            --title="$WP_TITLE" \
-            --admin_user=$WP_ADMIN_USER \
-            --admin_password=$WP_ADMIN_PASSWORD \
-            --admin_email=$WP_ADMIN_EMAIL \
-            --allow-root
-        
-        echo "WordPress installed successfully."
-        
-        # Create additional user if specified
-        if [ ! -z "$WP_USER" ] && [ ! -z "$WP_USER_PASSWORD" ] && [ ! -z "$WP_USER_EMAIL" ]; then
-            echo "Creating additional user: $WP_USER"
-            wp user create $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD --role=author --allow-root
-            echo "User $WP_USER created successfully."
-        fi
-        
-    else
-        echo "WordPress is already installed."
+    wp core install \
+        --url=$WP_URL \
+        --title="$WP_TITLE" \
+        --admin_user=$WP_ADMIN_USER \
+        --admin_password=$WP_ADMIN_PASSWORD \
+        --admin_email=$WP_ADMIN_EMAIL \
+        --allow-root
+    
+    echo "WordPress installed successfully."
+    
+    # Create additional user if specified
+    if [ ! -z "$WP_USER" ] && [ ! -z "$WP_USER_PASSWORD" ] && [ ! -z "$WP_USER_EMAIL" ]; then
+        echo "Creating additional user: $WP_USER"
+        wp user create $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD --role=author --allow-root
+        echo "User $WP_USER created successfully."
     fi
     
 else
-    echo "WordPress configuration already exists."
+    echo "WordPress is already installed."
 fi
 
 # Set proper ownership and permissions
@@ -96,16 +105,30 @@ echo "Starting PHP-FPM..."
 exec /usr/sbin/php-fpm7.4 -F
 
 
-# **************************************************************************** #
-#                              COLOR SETTING                                   #
-# **************************************************************************** #
+######## 
+# NOTE #
+########
 
-COLOR_RESET="\033[0m"
-GREENB="\033[1;38;5;85m"
-REDB="\033[1;91m"
+#Fixed Database Connection Test (Line 32-35):
+# OLD (BROKEN):
+#until wp db check --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASSWORD --dbhost=$DB_HOST; do
+# NEW (FIXED):
+#until mysql -h"$DB_HOST" -u"$DB_USER" -p"$DB_PASSWORD" -e "SELECT 1" >/dev/null 2>&1; do
+
+2. Fixed Environment Variable (Line 20):
+# OLD:
+DB_HOST=${DB_HOST:-"mariadb"}
+
+# NEW:
+DB_HOST=${MYSQL_HOSTNAME:-"mariadb"}  # Matches your docker-compose.yml
 
 
-# **************************************************************************** #
-#                                  NOTES                                       #
-# **************************************************************************** #
+3. Fixed Download Logic (Line 26):
+# OLD:
+if [ ! -f wp-config.php ]; then
 
+# NEW:
+if [ ! -f wp-load.php ]; then  # Check for WordPress core file instead
+
+4. Added Force Flag:
+wp core download --allow-root --force  # Handles existing files better

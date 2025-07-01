@@ -15,6 +15,8 @@ RUN apt-get update && \
     php-gd \
     php-cli \
     php-mbstring
+# Add MySQL Client 
+RUN apt-get install -y default-mysql-client
 
 # Download WP-CLI -> make it executable -> move it to a directory in the PATH
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
