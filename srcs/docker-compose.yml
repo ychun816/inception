@@ -12,7 +12,7 @@ services:
     depends_on:
       - wordpress # This service waits for 'wordpress' service to start first
     ports:
-      - 8443:443 # host_port:container_port #Maps port 8443 on your machine to port 443 in container
+      - 443:443 # host_port:container_port #Maps port 443 on your machine to port 443 in container
     volumes:
       - wordpress_data:/var/www/html #named_volume:container_path #Shares data between containers
     networks:
@@ -81,7 +81,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${HOME}/data/mariadb_data
+      device: ${DATA_DIR}/mariadb_data
       #device: /home/${USER}/data/mariadb
       o: bind
   
@@ -90,7 +90,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${HOME}/data/wordpress_data
+      device: ${DATA_DIR}/wordpress_data
       #device: /home/${USER}/data/wordpress
       o: bind
 
