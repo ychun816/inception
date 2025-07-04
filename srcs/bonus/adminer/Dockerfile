@@ -14,10 +14,14 @@ RUN apt-get update && \
     php-json \
     php-mbstring \
     curl \
+    iputils-ping \
     && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache modules
 RUN a2enmod rewrite php7.4
+
+# Fix Apache ServerName warning
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Download Adminer
 RUN mkdir -p /var/www/html && \
