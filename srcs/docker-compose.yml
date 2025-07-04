@@ -12,7 +12,7 @@ services:
     depends_on:
       - wordpress # This service waits for 'wordpress' service to start first
     ports:
-      - 443:443 # host_port:container_port #Maps port 443 on your machine to port 443 in container
+      - 443:443 # External HTTPS access #Maps port 443 on your machine to port 443 in container
     volumes:
       - wordpress_data:/var/www/html #named_volume:container_path #Shares data between containers
     networks:
@@ -74,9 +74,28 @@ services:
       #network
     restart: unless-stopped
 
+  # BONUS: redis
+  redis:
+    build: ./bonus/redis
+    container_name: redis
+    #image: redis:latest #no image needed -> Dockerfile to do docker build
+    #ports: NO ports needed (internal connection only)
+    networks:
+      - inception_network
+    restart: always
+    
+  # BONUS: adminer
+  adminer:
+    build: ./bonus/adminer
+    container_name: adminer
+    networks:
+      - inception_network
+    restart: always
+
+
 # VOLUMES #Named volumes for data persistence
 volumes:
-  # mariadb
+  # mariadb volume
   mariadb_data:
     driver: local
     driver_opts:
@@ -85,13 +104,29 @@ volumes:
       #device: /home/${USER}/data/mariadb
       o: bind
   
-  # wordpress
+  # wordpress volume
   wordpress_data:
     driver: local
     driver_opts:
       type: none
       device: ${DATA_DIR}/wordpress_data
       #device: /home/${USER}/data/wordpress
+      o: bind
+
+  # redis volume
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${DATA_DIR}/redis_data
+      o: bind
+
+  # adminer volume  
+  adminer_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${DATA_DIR}/adminer_data
       o: bind
 
 # NETWORKS
