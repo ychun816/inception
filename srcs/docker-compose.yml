@@ -9,7 +9,6 @@ services:
       dockerfile: Dockerfile          #Dockerfile name (default is "Dockerfile")
     depends_on:
       - wordpress # This service waits for 'wordpress' service to start first
-      - adminer
     ports:
       - 443:443 # External HTTPS access #Maps port 443 on your machine to port 443 in container
     volumes:

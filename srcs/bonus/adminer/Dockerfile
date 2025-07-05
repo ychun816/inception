@@ -21,12 +21,27 @@ RUN apt-get update && \
 RUN a2enmod rewrite php7.4
 
 # Fix Apache ServerName warning
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+# RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN echo "DirectoryIndex index.php" >> /etc/apache2/apache2.conf
 
-# Download Adminer
+# Download Adminer to ROOT instead of subfolder
+# RUN mkdir -p /var/www/html/adminer && \
+#     curl -sSLo /var/www/html/adminer/index.php https://www.adminer.org/latest.php
 RUN mkdir -p /var/www/html && \
     curl -sSLo /var/www/html/index.php \
     https://www.adminer.org/latest.php
+
+# Configure Apache to serve /adminer/
+# RUN echo '<VirtualHost *:80>
+#     DocumentRoot /var/www/html
+#     <Directory /var/www/html/adminer>
+#         Options Indexes FollowSymLinks
+#         AllowOverride All
+#         Require all granted
+#     </Directory>
+# </VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html && \

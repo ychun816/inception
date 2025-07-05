@@ -44,8 +44,8 @@ if [ -n "$CUSTOM_NETWORKS" ]; then
 fi
 
 #remove all data directories -> should not need
-echo -e "${REDB}REMOVING DATA DIRECTORIES...${COLOR_RESET}"
-sudo rm -rf /home/yilin42/data
+# echo -e "${REDB}REMOVING DATA DIRECTORIES...${COLOR_RESET}"
+# sudo rm -rf /home/yilin42/data
 
 
 # **************************************************************************** #

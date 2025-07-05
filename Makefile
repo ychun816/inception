@@ -87,6 +87,8 @@ define STATUS_CHECK_TABLE
 	@echo "$(BLUEB)📊 SYSTEM STATUS:$(COLOR_RESET)"
 	@echo "$(PINKB)Containers:$(COLOR_RESET)"
 	@docker compose -f $(COMPOSE_FL) ps
+	@echo "$(PINKB)Networks:$(COLOR_RESET)"
+	@docker network ls
 	@echo "$(PINKB)Data directories:$(COLOR_RESET)"
 	@ls -la $(DATA_DIR) 2>/dev/null || echo "Data directory not found"
 	@echo "$(PINKB)Website status:$(COLOR_RESET)"
