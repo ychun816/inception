@@ -256,4 +256,87 @@ The MariaDB server daemon
 
 <!-- -------- -->
 
+# BONUS - Adminer 
 
+## Dockerfile
+
+
+# mkdir -p
+# altho /var/www/html already exist,
+# -> defensive programming: ensures the path exists in case of image changes or layering differences
+# -p avoids errors if the directory already exists.
+
+# install Adminer into your web directory so Apache can serve it
+# downloads the latest Adminer PHP file and places it directly into the web root (/var/www/html) as index.php
+# -sS: silent mode, but still shows errors
+# -L: follows redirects (in case the URL redirects)
+# -o: output to a file
+
+# a2enmod : enable Apache modules.
+# 'rewrite': needed for clean URLs.
+# 'php7.4' : load the PHP interpreter module into Apache.
+# In most modern builds, just enabling `php` is safer.
+
+
+# -R : "recursive" -> apply to the specified directory and all its contents (files and subdirectories) inside it
+# user:group
+# chown -R : changes ownership of /var/www/html and every file and folder inside it to user www-data and group www-data
+# chmod -R 755 :
+#  - owner: read/write/execute
+#  - group + others: read/execute
+
+
+
+# 80 : standard HTTP port ->  Apache defaults to port 80 (standard for web apps)
+# Most people leave Apache on port 80 and use Docker’s ports: in docker-compose.yml to map to other host ports (e.g., 8080:80) 
+
+
+# "apache2ctl" : the command to control/start Apache.
+# -D: tells Apache to define a configuration flag.
+# FOREGROUND: instructs Apache not to daemonize (i.e., stay in the foreground).
+
+
+# DOWNLOADED TOOLS:
+# apache2           # Web server (serves pages)
+# php               # PHP interpreter (runs code)
+# php-mysql         # Connects PHP to MySQL/MariaDB
+# php-mysqli        # Alternative MySQL connection method
+# php-pdo           # Database abstraction layer
+# php-pdo-mysql     # PDO driver for MySQL/MariaDB
+
+# BONUS - redis
+
+## Dockerfile
+
+
+# apt-get install -y redis-server redis-tools: Installs Redis and its CLI tools
+# rm -rf /var/lib/apt/lists/*: Cleans up cached package lists to reduce image size
+
+# redis:redis -> changes the owner of the directory to the redis system user and group
+# chown : ensures the Redis process has the permissions to read/write data and logs
+
+# 755 : 
+# Owner (redis): read (r), write (w), execute (x)
+# Group: read (r), execute (x)
+# Others: read (r), execute (x)
+# Directories need x (execute) permission to traverse into them. Without x, even reading file names inside fails.
+
+
+# default port:
+# Redis listens on 6379 standard port 
+# HTTP -> 80
+# HTTPS -> 443
+
+# USER redis
+# -> best practice : always run apps with the least privilege they need
+
+# "redis-server" : Redis’s main server process (daemon)
+# "--bind" :  Tells Redis which IP address(es) it should listen on for incoming connections.
+# "0.0.0.0": Allow connections from any IP (for container networking)
+
+# EXTRA FLAGS
+# --logfile /var/log/redis/redis.log: Log file location
+# --loglevel notice: Moderate logging level
+# --save 900 1: Save if at least 1 key changed in 900 seconds
+# --save 300 10: Save if at least 10 keys changed in 300 seconds
+# --save 60 10000: Save if at least 10000 keys changed in 60 seconds
