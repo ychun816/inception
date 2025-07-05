@@ -4,18 +4,17 @@ services:
   # NGINX Web Server Service
   nginx:
     container_name: nginx
-    build: #./requirements/nginx  # Simple form: just the directory path
+    build:
       context: ./requirements/nginx
-      dockerfile: Dockerfile          #Dockerfile name (default is "Dockerfile")
+      dockerfile: Dockerfile
     depends_on:
-      - wordpress # This service waits for 'wordpress' service to start first
+      - wordpress
     ports:
-      - 443:443 # External HTTPS access #Maps port 443 on your machine to port 443 in container
+      - 443:443
     volumes:
-      - wordpress_data:/var/www/html #named_volume:container_path #Shares data between containers
+      - wordpress_data:/var/www/html
     networks:
       - inception_network
-      #- network # Connects to a custom network named "network"
     restart: unless-stopped
 
   # MARIADB DATABASE
@@ -24,22 +23,18 @@ services:
     build: 
       context: ./requirements/mariadb
       dockerfile: Dockerfile
-    # env_file: .env  # Passes ALL variables to container
     environment:
+      # Database connection for mariadb
+      # variables used to configure the database connection
       MYSQL_HOSTNAME: ${MYSQL_HOSTNAME}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      # MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      # MYSQL_DATABASE: ${MYSQL_DATABASE}
-      # MYSQL_USER: ${MYSQL_USER}
-      # MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
       - inception_network
-      #- network
     restart: unless-stopped
 
   # WORDPRESS
@@ -98,7 +93,6 @@ services:
       - inception_network
     restart: unless-stopped
 
-
 # VOLUMES #Named volumes for data persistence
 volumes:
   # mariadb volume
@@ -107,7 +101,7 @@ volumes:
     driver_opts:
       type: none
       device: ${DATA_DIR}/mariadb_data
-      #device: /home/${USER}/data/mariadb
+      #device: /home/${USER}/data/mariadb (alternative way to write host path)
       o: bind
   
   # wordpress volume
@@ -116,7 +110,6 @@ volumes:
     driver_opts:
       type: none
       device: ${DATA_DIR}/wordpress_data
-      #device: /home/${USER}/data/wordpress
       o: bind
 
   # redis volume
@@ -135,31 +128,7 @@ volumes:
       device: ${DATA_DIR}/adminer_data
       o: bind
 
-# NETWORKS
-# # Custom network for service communication
+# NETWORKS # Custom network for service communication
 networks:
   inception_network:
     driver: bridge
-
-
-
-# **************************************************************************** #
-#                                  NOTES                                       #
-# **************************************************************************** #
-
-# depends_on:
-#     Adds a service dependency on wordpress, ensuring nginx will wait for wordpress to start first.
-#     This is especially useful because your Nginx nginx.conf is forwarding PHP requests to fastcgi_pass wordpress:9000.
-
-# restart: 
-# restart: unless-stopped => more graceful than restart: always. It ensures services are not restarted if manually stopped, yet they auto-restart after a failure or reboot
-# always : Container restarts automatically if it stops
-# unless-stopped :Restart unless manually stopped
-# on-failure : Only restart on failure
-# no : Never restart
-
-# driver: local	Use Docker’s default volume driver (local)
-# driver_opts:	Additional options for the volume
-# type: none	Used when mounting a host directory directly (instead of Docker managing it)
-# device:	The path on your host machine to use as the volume
-# o: bind	Bind-mount type: mounts the exact directory you specify (not a managed volume)

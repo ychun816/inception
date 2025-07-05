@@ -24,17 +24,3 @@ ENTRYPOINT ["/usr/local/bin/init_mariadb.sh"]
 
 # CMD provide default arguments to the ENTRYPOINT script
 CMD ["mysqld", "--bind-address=0.0.0.0"]
-
-
-# **************************************************************************** #
-#                                  NOTES                                       #
-# **************************************************************************** #
-
-# ENTRYPOINT
-# NOTE: You should make sure `/usr/local/bin/mariadb.sh` exists in the image
-# If not, the container will fail to run
-
-# mysqld: The MariaDB server daemon
-# --bind-address=0.0.0.0:
-# -> Configures the server to listen on all network interfaces
-# -> Allows external connections (not just localhost)

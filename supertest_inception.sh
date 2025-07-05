@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Colors for output
+# **************************************************************************** #
+#                              COLOR SETTING                                   #
+# **************************************************************************** #
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -9,11 +12,17 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+# **************************************************************************** #
+
 echo -e "${CYAN}🚀 INCEPTION SUPER TEST SCRIPT 🚀${NC}"
 echo "=================================="
 echo ""
 
-# Test SSL/TLS
+# **************************************************************************** #
+#                              INDIVISUAL TESTS                                #
+# **************************************************************************** #
+
+### Test SSL/TLS ###
 echo -e "${RED}🔒 SSL/TLS TESTS 🔒${NC}"
 echo "==================="
 
@@ -42,7 +51,7 @@ fi
 
 echo ""
 
-# Test Docker containers
+### Test Docker containers ###
 echo -e "${BLUE}🐳 CONTAINER TESTS 🐳${NC}"
 echo "====================="
 
@@ -59,7 +68,7 @@ done
 
 echo ""
 
-# Test Database
+### Test Database ###
 echo -e "${PURPLE}🗄️ DATABASE TESTS 🗄️${NC}"
 echo "===================="
 
@@ -89,7 +98,7 @@ fi
 
 echo ""
 
-# Test WordPress
+### Test WordPress ###
 echo -e "${YELLOW}📝 WORDPRESS TESTS 📝${NC}"
 echo "===================="
 
@@ -127,7 +136,7 @@ fi
 
 echo ""
 
-# Test nginx
+#### Test nginx ###
 echo -e "${CYAN}🌐 NGINX TESTS 🌐${NC}"
 echo "================="
 
@@ -167,7 +176,7 @@ fi
 
 echo ""
 
-# Test Redis
+### Test Redis ###
 echo -e "${RED}🔴 REDIS TESTS 🔴${NC}"
 echo "===================="
 
@@ -207,7 +216,7 @@ fi
 
 echo ""
 
-# Test Adminer
+### Test Adminer ### 
 echo -e "${PURPLE}🗄️ ADMINER TESTS 🗄️${NC}"
 echo "===================="
 
@@ -253,7 +262,7 @@ fi
 
 echo ""
 
-# Volume Tests
+### Volume Tests ### 
 echo -e "${YELLOW}💾 VOLUME TESTS 💾${NC}"
 echo "=================="
 
@@ -274,7 +283,7 @@ fi
 
 echo ""
 
-# Network Tests
+###  Network Tests ### 
 echo -e "${CYAN}🌐 NETWORK TESTS 🌐${NC}"
 echo "=================="
 
@@ -308,6 +317,11 @@ else
 fi
 
 echo ""
+
+
+# **************************************************************************** #
+#                              SUMMARY                                         #
+# **************************************************************************** #
 
 # Summary
 echo -e "${GREEN}🎉 COMPLETE TEST SUMMARY 🎉${NC}"

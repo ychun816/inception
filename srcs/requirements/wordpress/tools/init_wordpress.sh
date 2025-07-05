@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# WordPress Setup Script
-# This script downloads WordPress, configures it, and sets up the database connection
-
-set -e  # Exit on any error
+# Exit on any error
+set -e  
 
 echo "Starting WordPress setup..."
 
@@ -18,7 +16,7 @@ WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL:-"admin@example.com"}
 DB_NAME=${MYSQL_DATABASE:-"wordpress"}
 DB_USER=${MYSQL_USER:-"wpuser"}
 DB_PASSWORD=${MYSQL_PASSWORD:-"wppassword"}
-DB_HOST=${MYSQL_HOSTNAME:-"mariadb"}  # ⚠️ Fixed: Use MYSQL_HOSTNAME
+DB_HOST=${MYSQL_HOSTNAME:-"mariadb"}
 
 # WordPress directory
 WP_DIR="/var/www/html"
@@ -27,11 +25,11 @@ WP_DIR="/var/www/html"
 cd $WP_DIR
 
 # Check if WordPress is already downloaded
-if [ ! -f wp-load.php ]; then  # ⚠️ Fixed: Check for wp-load.php instead of wp-config.php
+if [ ! -f wp-load.php ]; then
     echo "WordPress not found. Downloading WordPress..."
     
     # Download WordPress core files
-    wp core download --allow-root --force  # ⚠️ Added --force flag
+    wp core download --allow-root --force
     
     echo "WordPress downloaded successfully."
 fi
@@ -103,32 +101,3 @@ echo "WordPress setup completed successfully!"
 # Start PHP-FPM
 echo "Starting PHP-FPM..."
 exec /usr/sbin/php-fpm7.4 -F
-
-
-######## 
-# NOTE #
-########
-
-#Fixed Database Connection Test (Line 32-35):
-# OLD (BROKEN):
-#until wp db check --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASSWORD --dbhost=$DB_HOST; do
-# NEW (FIXED):
-#until mysql -h"$DB_HOST" -u"$DB_USER" -p"$DB_PASSWORD" -e "SELECT 1" >/dev/null 2>&1; do
-
-2. Fixed Environment Variable (Line 20):
-# OLD:
-DB_HOST=${DB_HOST:-"mariadb"}
-
-# NEW:
-DB_HOST=${MYSQL_HOSTNAME:-"mariadb"}  # Matches your docker-compose.yml
-
-
-3. Fixed Download Logic (Line 26):
-# OLD:
-if [ ! -f wp-config.php ]; then
-
-# NEW:
-if [ ! -f wp-load.php ]; then  # Check for WordPress core file instead
-
-4. Added Force Flag:
-wp core download --allow-root --force  # Handles existing files better

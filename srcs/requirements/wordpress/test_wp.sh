@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# WordPress Container Comprehensive Test Script
-# This script runs all tests to verify WordPress container functionality
-
-set -e  # Exit on any error
+set -e
 
 # **************************************************************************** #
 #                              COLOR SETTING                                   #

@@ -48,28 +48,24 @@ fi
 # sudo rm -rf /home/yilin42/data
 
 
+
 # **************************************************************************** #
 #                                    NOTES                                     #
 # **************************************************************************** #
-
-# -e : interprets \n, \t, colors
-# -n : check if result is not empty
 
 #if [ CONDITION ]; then
   # ~~commands to run if CONDITION is true~~
 #fi
 
+# -e : interprets \n, \t, colors
+# -n : check if result is not empty
 # -a : show all containers (running, stopped, etc.)
 # -q : quiet mode –> only return container ID (no headers or other details)
 
 # docker container ls -aq : list all container ID
 # docker images -aq : show all image ID
 # docker volume ls -q : list all volume names/ID (quiet mode)
+
 # docker rm <ids> : remove containers
 # docker rmi -f <ids> : FORCE remove images (even if used by stopped containers)
-
 # docker system prune -a : A comprehensive cleanup command -> Deletes unused containers, networks, images, and build cache
-
-# if list all networks, output will be: 
-# NETWORK ID     NAME      DRIVER    SCOPE
-# 9f4c53bff3d2   bridge    bridge    local
