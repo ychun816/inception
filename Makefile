@@ -7,6 +7,10 @@ DATA_DIR = $(HOME)/data
 MARIADB_DATA = $(DATA_DIR)/mariadb_data/
 WORDPRESS_DATA = $(DATA_DIR)/wordpress_data/
 
+#BONUS
+REDIS_DATA = $(DATA_DIR)/redis_data/
+ADMINER_DATA = $(DATA_DIR)/adminer_data/
+
 # **************************************************************************** #
 #                              SRC & OBJ FILES                                 #
 # **************************************************************************** #
@@ -24,10 +28,11 @@ all: up
 
 up:
 	mkdir -p $(DATA_DIR)
-	mkdir -p $(MARIADB_DATA) $(WORDPRESS_DATA)
+	mkdir -p $(MARIADB_DATA) $(WORDPRESS_DATA) 
+	mkdir -p $(REDIS_DATA) $(ADMINER_DATA)
 	docker compose -f $(COMPOSE_FL) up -d --build
 
-check-env:
+checkenv:
 	@if [ -f srcs/.env ]; then \
 		echo "$(GREENB)✅ .env file already exists$(COLOR_RESET)"; \
 	else \
@@ -47,7 +52,7 @@ status:
 
 supertest:
 	@echo "$(BLUEB)🧪 Running comprehensive tests...$(COLOR_RESET)"
-# @chmod +x ./supertest_inception.sh
+	@chmod +x ./supertest_inception.sh
 	@./supertest_inception.sh
 
 
