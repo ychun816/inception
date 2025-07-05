@@ -45,10 +45,10 @@ check-env:
 status:
 	$(STATUS_CHECK_TABLE)
 
-super-test:
+supertest:
 	@echo "$(BLUEB)🧪 Running comprehensive tests...$(COLOR_RESET)"
-	@chmod +x ./test_inception.sh
-	@./test_inception.sh
+# @chmod +x ./supertest_inception.sh
+	@./supertest_inception.sh
 
 
 ### CLEANUP ###
