@@ -36,12 +36,12 @@ checkenv:
 		echo "$(GREENB)✅ .env file already exists$(COLOR_RESET)"; \
 	else \
 		echo "$(BLUEB)⚠️ .env file not found$(COLOR_RESET)"; \
-		read -p "Enter path to .env file: " env_path; \
+		# read -p "Enter path to .env file: " env_path; \
 		if [ -f "$$env_path" ]; then \
 			cp "$$env_path" srcs/.env; \
 			echo "$(GREENB)✅ .env file copied successfully$(COLOR_RESET)"; \
-		else \
-			echo "$(REDB)❌ .env file not found at $$env_path$(COLOR_RESET)"; \
+		# else \
+		# 	echo "$(REDB)❌ .env file not found at $$env_path$(COLOR_RESET)"; \
 			exit 1; \
 		fi; \
 	fi
