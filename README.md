@@ -14,7 +14,7 @@ https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJE4fQvVlx
 Docker-Compose (EDITINGGG) : 
 
 
-# Contairs (Mandotary)
+# Containers (Mandotary)
 🀢 Nginx tests+explains :
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk2Jbr24xe
 
