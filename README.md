@@ -6,6 +6,7 @@
 # Brief
 𓃻 Brief for Total Newbs: 
 https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe
+
 𓃻 Set up Online Virtual Server(VPS) instead of local virtual machine :
 https://github.com/ychun816/inception-VPS-setup-tutorial
 
