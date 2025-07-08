@@ -1,0 +1,72 @@
+1. Set up VM or VPS (Virtual Server), name it "inception".
+2. In virtual Server, create a user named "yilin42".
+3. Create a directory named "inception" in the home directory of "yilin42".
+4. Inside the "inception" directory, create a subdirectory named "data".
+5. Inside inception/data, create the following directories:
+   - adminer_data
+   - mariadb_data
+   - redis_data
+   - wordpress_data
+
+6. Create a file named ".env" in the "inception" directory with the following content:
+```
+DOMAIN_NAME=yilin.42.fr
+# MariaDB Configuration
+MYSQL_HOSTNAME=mariadb
+MYSQL_DATABASE=wordpress
+MYSQL_USER=yilin
+MYSQL_ROOT_PASSWORD=happybirthday
+MYSQL_PASSWORD=happybirthday
+# WordPress Configuration
+WP_ADMIN_USER=yilin
+WP_ADMIN_PASSWORD=happybirthday
+
+7. Each app has its own container/Dockerfile:
+   - Adminer: `srcs/bonus/adminer/Dockerfile`
+   - Redis: `srcs/bonus/redis/Dockerfile`
+   - MariaDB: `srcs/requirements/mariadb/Dockerfile`
+   - Nginx: `srcs/requirements/nginx/Dockerfile`
+   - WordPress: `srcs/requirements/wordpress/Dockerfile`
+8. Create a `docker-compose.yml` file in the `srcs` directory to manage the containers.
+
+
+PROJECT STRUCTUE:
+
+inception% pwd
+/home/yilin42/data
+inception% ls
+adminer_data  mariadb_data  redis_data  wordpress_data
+
+inception% pwd
+/home/yilin42/inception
+
+inception% tree
+.
+├── Makefile
+├── README.md
+├── Subject_EN.pdf
+├── cleanup.sh
+├── srcs
+│   ├── bonus
+│   │   ├── adminer
+│   │   │   └── Dockerfile
+│   │   └── redis
+│   │       └── Dockerfile
+│   ├── docker-compose.yml
+│   └── requirements
+│       ├── mariadb
+│       │   ├── Dockerfile
+│       │   └── tools
+│       │       └── init_mariadb.sh
+│       ├── nginx
+│       │   ├── Dockerfile
+│       │   └── nginx.conf
+│       └── wordpress
+│           ├── Dockerfile
+│           ├── conf
+│           │   └── www.conf
+│           ├── test_wp.sh
+│           └── tools
+│               └── init_wordpress.sh
+└── supertest_inception.sh
+
