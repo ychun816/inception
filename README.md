@@ -5,8 +5,6 @@
 # 🧠 INCEPTION
 ## Docker, System Administration, Virtualization
 
-﹏𓃬_𓃮𓃮﹏𓃮﹏ 🀄︎🀀🀁🀂🀃🀅🀇🀈🀉 🀢🀣🀤🀥🀦🀧🀨🀩🀐🀙
-
 ---
 
 ## 📘 Table of Contents
