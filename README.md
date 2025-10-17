@@ -15,8 +15,6 @@
 - [ASCII Network Diagram](#ascii-network-diagram)
 - [Key Concepts Learned](#key-concepts-learned)
 - [Skills Developed](#skills-developed)
-- [42 School Standards](#42-school-standards)
-- [Contact](#contact)
 
 ---
 
