@@ -201,8 +201,7 @@ No external pre-built images are used (only Debian base).
         │ Both linked via same docker network for internal access.     │
         └──────────────────────────────────────────────────────────────┘
 ```
-───────────────────────────────────────────────────────────────────────────────
-📘 **Legend**
+# **Legend**
 - 🔒  SSL handled by NGINX  
 - 🧱  Persistent volume  
 - 🀢  Reverse proxy / entrypoint  
@@ -211,9 +210,8 @@ No external pre-built images are used (only Debian base).
 - 🀣  Cache (Redis)  
 - 🀩  Database Admin GUI (Adminer)
 
-───────────────────────────────────────────────────────────────────────────────
 
-💡 **Flow Summary**
+# **Flow Summary**
 1️⃣ Client sends HTTPS request → NGINX (SSL termination)  
 2️⃣ NGINX proxies PHP requests → WordPress (port 9000)  
 3️⃣ WordPress queries data → MariaDB via internal bridge  
@@ -221,17 +219,16 @@ No external pre-built images are used (only Debian base).
 5️⃣ Adminer allows DB inspection via secure mapped port  
 6️⃣ All data persists via mounted volumes under `./data`
 
-───────────────────────────────────────────────────────────────────────────────
-🧠 Key Concepts Learned
+
+# Key Concepts Learned
 - Containerization Fundamentals: Dockerfile creation, dependency isolation
 - Networking: Bridge networks, port mapping, internal service routing
 - Data Persistence: Bind mounts and named volumes for resilient data
 - Security: SSL setup, least privilege configurations
 - Automation: Docker Compose orchestration and lifecycle control
 - Debugging: Log inspection, health checks, rebuild automation
-───────────────────────────────────────────────────────────────────────────────
 
-💡 Skills Developed
+# Skills Developed
 - Mastery of Docker & Compose fundamentals
 - Understanding of Linux system administration
 - Secure web service deployment
