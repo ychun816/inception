@@ -20,7 +20,7 @@
 
 ## About
 
-**Inception** is a 42 School DevOps project that introduces system administration, virtualization, and container orchestration through **Docker** and **Docker Compose**.  
+**Inception** is a DevOps project that introduces system administration, virtualization, and container orchestration through **Docker** and **Docker Compose**.  
 
 You must create and configure multiple containers—each serving a specific role—while managing networks, persistent volumes, and inter-container communication securely.
 
