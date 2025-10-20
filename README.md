@@ -201,7 +201,6 @@ No external pre-built images are used (only Debian base).
 ![JavaScript](https://img.shields.io/badge/JavaScript-Learned-FFB3BA?style=flat&logo=javascript&logoColor=white)
 ![Bash](https://img.shields.io/badge/Bash-Learned-BFEFFF?style=flat&logo=gnubash&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-Learned-FFC4D6?style=flat&logo=linux&logoColor=white)
-![Pastel Yellow](https://img.shields.io/badge/Pastel%20Yellow-Learned-FFF1A8?style=flat&logoColor=white)
 
 <!-- Tools -->
 ![Docker](https://img.shields.io/badge/Docker-Learned-C5A3E8?style=flat&logo=docker&logoColor=white)
@@ -212,8 +211,8 @@ No external pre-built images are used (only Debian base).
 ![Apache](https://img.shields.io/badge/Apache-Learned-E8D4F0?style=flat&logo=apache&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/Prometheus-Learned-FFCCE0?style=flat&logo=prometheus&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-Learned-C2E7FF?style=flat&logo=grafana&logoColor=white)
-![Pastel Yellow Tool](https://img.shields.io/badge/Pastel%20Yellow-Learned-FFF1A8?style=flat&logoColor=white)
 </p>
+
 
 
 <!--
@@ -224,7 +223,8 @@ No external pre-built images are used (only Debian base).
   <img src="https://img.shields.io/badge/Inception-FCB9DE.svg"/> <!-- pastel pink -->
   <img src="https://img.shields.io/badge/Experimental-FFF1A8.svg"/> <!-- pastel yellow -->
 </p>
- -->
+
+-->
 
 
 
