@@ -1,10 +1,7 @@
-﹏𓃬_𓃮𓃮﹏𓃮﹏
-🀄︎🀀🀁🀂🀃🀅🀇🀈🀉
-🀢🀣🀤🀥🀦🀧🀨🀩🀐🀙
 
-# 🧠 INCEPTION
+# 🧠 INCEPTION 
 ## Docker, System Administration, Virtualization
-
+﹏𓃬_𓃮𓃮﹏𓃮﹏ 🀄︎🀀🀁🀂🀃🀅🀇🀈🀉 🀢🀣🀤🀥🀦🀧🀨🀩🀐🀙
 ---
 
 ## 📘 Table of Contents
@@ -18,7 +15,7 @@
 
 ---
 
-## About
+## 𓃬 About
 
 **Inception** is a DevOps project that introduces system administration, virtualization, and container orchestration through **Docker** and **Docker Compose**.  
 
@@ -32,9 +29,9 @@ This project focuses on:
 
 ---
 
-## Resources & References
+## 𓃬 Resources & References
 
-> These are your main learning and reference materials used during project development.
+> These are the main learning and reference materials used during project development.
 
 - 🌐 [**Project Brief for Total Newbs:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe)
 - ☁️ [**Set up Online VPS Tutorial(instead of local VM):**](https://github.com/ychun816/inception-VPS-setup-tutorial)
@@ -53,7 +50,7 @@ This project focuses on:
 
 ---
 
-## Setup Overview
+## 𓃬 Setup Overview
 
 Each service is built **from scratch** using a dedicated Dockerfile.  
 No external pre-built images are used (only Debian base).
@@ -73,7 +70,7 @@ No external pre-built images are used (only Debian base).
 
 ---
 
-## Container Architecture
+## 𓃬 Container Architecture
 
 | Container | Role | Exposed Port | Data Persistence | Key Notes |
 |------------|------|---------------|------------------|------------|
@@ -85,9 +82,9 @@ No external pre-built images are used (only Debian base).
 
 ---
 
-## Network Diagram
+## 𓃬 Network Diagram
 
-## Inception Network Topology
+## 𓃬 Inception Network Topology
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
@@ -156,7 +153,7 @@ No external pre-built images are used (only Debian base).
 
 ---
 
-## **Legend**
+## 𓃬 Legend
 - 🔒  SSL handled by NGINX  
 - 🧱  Persistent volume  
 - 🀢  Reverse proxy / entrypoint  
@@ -165,7 +162,7 @@ No external pre-built images are used (only Debian base).
 - 🀣  Cache (Redis)  
 - 🀩  Database Admin GUI (Adminer)
 
-## **Flow Summary**
+## 𓃬 Flow Summary
 1️⃣ Client sends HTTPS request → NGINX (SSL termination)  
 2️⃣ NGINX proxies PHP requests → WordPress (port 9000)  
 3️⃣ WordPress queries data → MariaDB via internal bridge  
@@ -175,7 +172,7 @@ No external pre-built images are used (only Debian base).
 
 ---
 
-## Key Concepts Learned
+## 𓃬 Key Concepts Learned
 - Containerization Fundamentals: Dockerfile creation, dependency isolation
 - Networking: Bridge networks, port mapping, internal service routing
 - Data Persistence: Bind mounts and named volumes for resilient data
@@ -185,7 +182,7 @@ No external pre-built images are used (only Debian base).
 
 ---
 
-## Skills Developed
+## 𓃬 Skills Developed
 - Mastery of Docker & Compose fundamentals
 - Understanding of Linux system administration
 - Secure web service deployment
