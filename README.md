@@ -7,12 +7,12 @@
 
 ## 📘 Table of Contents
 - [About](#𓃬-About)
-- [Resources & References](#resources--references)
-- [Setup Overview](#setup-overview)
-- [Container Architecture](#container-architecture)
-- [ASCII Network Diagram](#inception-network-topology)
-- [Key Concepts Learned](#key-concepts-learned)
-- [Skills Developed](#skills-developed)
+- [Resources & References](#𓃬-resources--references)
+- [Setup Overview](#𓃬-setup-overview)
+- [Container Architecture](#𓃬-container-architecture)
+- [ASCII Network Diagram](#𓃬-inception-network-topology)
+- [Key Concepts Learned](#𓃬-key-concepts-learned)
+- [Skills Developed](#𓃬-skills-developed)
 
 ---
 
