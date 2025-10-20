@@ -10,7 +10,7 @@
 - [Resources & References](#resources--references)
 - [Setup Overview](#setup-overview)
 - [Container Architecture](#container-architecture)
-- [ASCII Network Diagram](#ascii-network-diagram)
+- [ASCII Network Diagram](#inception-network-topology)
 - [Key Concepts Learned](#key-concepts-learned)
 - [Skills Developed](#skills-developed)
 
