@@ -6,7 +6,7 @@
 ---
 
 ## 📘 Table of Contents
-- [About](#about)
+- [About](#𓃬-About)
 - [Resources & References](#resources--references)
 - [Setup Overview](#setup-overview)
 - [Container Architecture](#container-architecture)
