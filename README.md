@@ -1,7 +1,8 @@
+﹏𓃬_𓃮𓃮﹏𓃮﹏ 🀄︎🀀🀁🀂🀃🀅🀇🀈🀉 🀢🀣🀤🀥🀦🀧🀨🀩🀐🀙
 
 # 🧠 INCEPTION 
 ## Docker, System Administration, Virtualization
-﹏𓃬_𓃮𓃮﹏𓃮﹏ 🀄︎🀀🀁🀂🀃🀅🀇🀈🀉 🀢🀣🀤🀥🀦🀧🀨🀩🀐🀙
+
 ---
 
 ## 📘 Table of Contents
@@ -33,20 +34,20 @@ This project focuses on:
 
 > These are the main learning and reference materials used during project development.
 
-- 🌐 [**Project Brief for Total Newbs:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe)
-- ☁️ [**Set up Online VPS Tutorial(instead of local VM):**](https://github.com/ychun816/inception-VPS-setup-tutorial)
-- ⚙️ [**Dockerfile Reference:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJE4fQvVlx)
+- 🌐 [**Project Brief for Total Newbs**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe)
+- ☁️ [**Set up Online VPS Tutorial(instead of local VM)**](https://github.com/ychun816/inception-VPS-setup-tutorial)
+- ⚙️ [**Dockerfile Reference**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJE4fQvVlx)
 - 🐋 [**Docker-Compose Setup**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/H19SdYZBee)
 
 ### Containers Documentation
 - 🀢 **Nginx:** [Tests & Explanations](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk2Jbr24xe)  
 - 🀨 **MariaDB:** [DB Setup & Logic](https://hackmd.io/QYAwoSX0THiijO70dljNgQ?both)  
 - 🀦 **WordPress:** [WordPress Setup & Explanations](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ByQRKGlrlx)  
-- 🀣 **Redis & Adminer (Bonus):** [Redis/Adminer Notes](https://hackmd.io/IHK8axy8SpugLSENZhLPOg)
+- 🀣 **Redis & Adminer (Bonus)** [Redis/Adminer Notes](https://hackmd.io/IHK8axy8SpugLSENZhLPOg)
 
 ### Summary & Testing
-- 🀐 [**Total Project Summary:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1d5G7Nrlx)
-- 🀩 [**Tests for Containers & Concept Notes:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Hyws9Q_Sxg)
+- 🀐 [**Total Project Summary**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1d5G7Nrlx)
+- 🀩 [**Tests for Containers & Concept Notes**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Hyws9Q_Sxg)
 
 ---
 
