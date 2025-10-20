@@ -36,27 +36,20 @@ This project focuses on:
 
 > These are your main learning and reference materials used during project development.
 
-- 🌐 **Project Brief for Total Newbs:**  
-  [https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe)
-
-- ☁️ **Set up Online VPS (instead of local VM):**  
-  [Inception VPS Setup Tutorial](https://github.com/ychun816/inception-VPS-setup-tutorial)
-
-- ⚙️ **Dockerfile Reference:**  
-  [https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJE4fQvVlx](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJE4fQvVlx)
-
-- 🐋 **Docker Compose Notes (Editing in Progress)**
+- 🌐 [**Project Brief for Total Newbs:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/HkWxR-JExe)
+- ☁️ [**Set up Online VPS Tutorial(instead of local VM):**](https://github.com/ychun816/inception-VPS-setup-tutorial)
+- ⚙️ [**Dockerfile Reference:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/BJE4fQvVlx)
+- 🐋 [**Docker-Compose Setup**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/H19SdYZBee)
 
 ### Containers Documentation
 - 🀢 **Nginx:** [Tests & Explanations](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/rk2Jbr24xe)  
 - 🀨 **MariaDB:** [DB Setup & Logic](https://hackmd.io/QYAwoSX0THiijO70dljNgQ?both)  
-- 🀦 **WordPress:** *(Editing in progress)*  
-- 🀣 **Redis & Adminer (Bonus):** [Redis / Adminer Notes](https://hackmd.io/IHK8axy8SpugLSENZhLPOg)
+- 🀦 **WordPress:** [WordPress Setup & Explanations](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/ByQRKGlrlx)  
+- 🀣 **Redis & Adminer (Bonus):** [Redis/Adminer Notes](https://hackmd.io/IHK8axy8SpugLSENZhLPOg)
 
 ### Summary & Testing
-- 🀐 **Total Project Summary:** *(Editing in progress)*  
-- 🀩 **Tests for Containers & Concept Notes:**  
-  [https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Hyws9Q_Sxg](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Hyws9Q_Sxg)
+- 🀐 [**Total Project Summary:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/r1d5G7Nrlx)
+- 🀩 [**Tests for Containers & Concept Notes:**](https://hackmd.io/@QBrv51OvRPqs9dJjL2YIig/Hyws9Q_Sxg)
 
 ---
 
@@ -160,6 +153,9 @@ No external pre-built images are used (only Debian base).
         │ Both linked via same docker network for internal access.     │
         └──────────────────────────────────────────────────────────────┘
 ```
+
+---
+
 ## **Legend**
 - 🔒  SSL handled by NGINX  
 - 🧱  Persistent volume  
@@ -169,8 +165,6 @@ No external pre-built images are used (only Debian base).
 - 🀣  Cache (Redis)  
 - 🀩  Database Admin GUI (Adminer)
 
-
-
 ## **Flow Summary**
 1️⃣ Client sends HTTPS request → NGINX (SSL termination)  
 2️⃣ NGINX proxies PHP requests → WordPress (port 9000)  
@@ -179,7 +173,7 @@ No external pre-built images are used (only Debian base).
 5️⃣ Adminer allows DB inspection via secure mapped port  
 6️⃣ All data persists via mounted volumes under `./data`
 
-
+---
 
 ## Key Concepts Learned
 - Containerization Fundamentals: Dockerfile creation, dependency isolation
@@ -189,6 +183,7 @@ No external pre-built images are used (only Debian base).
 - Automation: Docker Compose orchestration and lifecycle control
 - Debugging: Log inspection, health checks, rebuild automation
 
+---
 
 ## Skills Developed
 - Mastery of Docker & Compose fundamentals
