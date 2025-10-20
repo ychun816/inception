@@ -194,11 +194,13 @@ No external pre-built images are used (only Debian base).
 ---
 
 <p align="center">
+  
 ![Docker](https://img.shields.io/badge/Docker-Learned-C5A3E8?style=flat&logo=docker&logoColor=white) <!-- pastel purple -->
 ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-Learned-FFD4D4?style=flat&logo=docker&logoColor=white) <!-- pastel pink -->
 ![Linux](https://img.shields.io/badge/Linux-Learned-FFC4D6?style=flat&logo=linux&logoColor=white) <!-- pastel pink -->
 ![Bash](https://img.shields.io/badge/Bash-Learned-BFEFFF?style=flat&logo=gnubash&logoColor=white) <!-- pastel blue -->
 ![Experimental](https://img.shields.io/badge/Experimental-FFF1A8?style=flat&logoColor=white) <!-- pastel yellow -->
+
 </p>
 
 
