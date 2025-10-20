@@ -194,9 +194,12 @@ No external pre-built images are used (only Debian base).
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Made%20with-TypeScript-blue.svg"/>
-  <img src="https://img.shields.io/badge/Blockchain-XRPL-green.svg"/>
-  <img src="https://img.shields.io/badge/Focus-Ledger%20Development-orange.svg"/>
+  <img src="https://img.shields.io/badge/Made%20with-TypeScript-9AD0EC.svg"/> <!-- pastel blue -->
+  <img src="https://img.shields.io/badge/Blockchain-XFEEB9C.svg"/> <!-- pastel yellow -->
+  <img src="https://img.shields.io/badge/Focus-Ledger%20Development-CDA4FF.svg"/> <!-- pastel purple -->
+  <img src="https://img.shields.io/badge/XRP-AAF7D1.svg"/> <!-- pastel green -->
+  <img src="https://img.shields.io/badge/Practice-FCB9DE.svg"/> <!-- pastel pink -->
 </p>
+
 
 
