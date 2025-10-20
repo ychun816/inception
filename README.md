@@ -191,5 +191,12 @@ No external pre-built images are used (only Debian base).
 - Infrastructure-as-code mindset
 - Performance tuning with Redis caching
 
+---
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Made%20with-TypeScript-blue.svg"/>
+  <img src="https://img.shields.io/badge/Blockchain-XRPL-green.svg"/>
+  <img src="https://img.shields.io/badge/Focus-Ledger%20Development-orange.svg"/>
+</p>
 
 
