@@ -194,37 +194,13 @@ No external pre-built images are used (only Debian base).
 ---
 
 <p align="center">
-<!-- Languages -->
-![C](https://img.shields.io/badge/C-Learned-B4E7CE?style=flat&logo=c&logoColor=white)
-![C++](https://img.shields.io/badge/C++-Intermediate-E6B8E7?style=flat&logo=cplusplus&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-Learned-D4B5E8?style=flat&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-Learned-FFB3BA?style=flat&logo=javascript&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-Learned-BFEFFF?style=flat&logo=gnubash&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-Learned-FFC4D6?style=flat&logo=linux&logoColor=white)
-
-<!-- Tools -->
-![Docker](https://img.shields.io/badge/Docker-Learned-C5A3E8?style=flat&logo=docker&logoColor=white)
-![Docker Compose](https://img.shields.io/badge/Docker%20Compose-Learned-FFD4D4?style=flat&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-Learned-AED9E0?style=flat&logo=kubernetes&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-Learned-DCC6E8?style=flat&logo=githubactions&logoColor=white)
-![NGINX](https://img.shields.io/badge/NGINX-Learned-B8E6CF?style=flat&logo=nginx&logoColor=white)
-![Apache](https://img.shields.io/badge/Apache-Learned-E8D4F0?style=flat&logo=apache&logoColor=white)
-![Prometheus](https://img.shields.io/badge/Prometheus-Learned-FFCCE0?style=flat&logo=prometheus&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-Learned-C2E7FF?style=flat&logo=grafana&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Learned-C5A3E8?style=flat&logo=docker&logoColor=white) <!-- pastel purple -->
+![Docker Compose](https://img.shields.io/badge/Docker%20Compose-Learned-FFD4D4?style=flat&logo=docker&logoColor=white) <!-- pastel pink -->
+![Linux](https://img.shields.io/badge/Linux-Learned-FFC4D6?style=flat&logo=linux&logoColor=white) <!-- pastel pink -->
+![Bash](https://img.shields.io/badge/Bash-Learned-BFEFFF?style=flat&logo=gnubash&logoColor=white) <!-- pastel blue -->
+![Experimental](https://img.shields.io/badge/Experimental-FFF1A8?style=flat&logoColor=white) <!-- pastel yellow -->
 </p>
 
-
-
-<!--
-<p align="center">
-  <img src="https://img.shields.io/badge/Made%20with-TypeScript-9AD0EC.svg"/> <!-- pastel blue -->
-  <img src="https://img.shields.io/badge/Blockchain-XRPL-AAF7D1.svg"/> <!-- pastel green -->
-  <img src="https://img.shields.io/badge/Focus-Ledger%20Development-CDA4FF.svg"/> <!-- pastel purple -->
-  <img src="https://img.shields.io/badge/Inception-FCB9DE.svg"/> <!-- pastel pink -->
-  <img src="https://img.shields.io/badge/Experimental-FFF1A8.svg"/> <!-- pastel yellow -->
-</p>
-
--->
 
 
 
